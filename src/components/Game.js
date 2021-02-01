@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import data from '../data/data.json'
+import Loader from './Loader'
 
 const Game = () => {
   const [playerCards, setPlayerCards] = useState([])
@@ -12,6 +13,8 @@ const Game = () => {
   const [winnerCurrent, setWinnerCurrent] = useState({})
   const [loserCurrent, setLoserCurrent] = useState({})
   const [chosenAttribute, setChosenAttribute] = useState('')
+
+  const [spinner, setSpinner] = useState(false)
 
   const [lastCardMsg, setLastCardMsg] = useState(false)
 
@@ -55,9 +58,13 @@ const Game = () => {
       dataArray[index] = temp
     }
     shuffledDeck = [...dataArray]
-
+    console.log(shuffledDeck)
     split()
-    setIsLoaded(true)
+    setSpinner(true)
+    setTimeout(() => {
+      setIsLoaded(true)
+      setSpinner(false)
+    }, 5000)
   }
 
   //functions to handle adding/removing of cards when one wins/loses
@@ -144,7 +151,9 @@ const Game = () => {
     }
 
     setChosenAttribute(e.target.value)
+
     setLastCardMsg(true)
+    setIsLoaded(true)
   }
 
   //smaller JSX bits to conditionally render
@@ -159,12 +168,29 @@ const Game = () => {
   )
 
   const startButton = !isLoaded && (
-    <button
-      className='text-lg border-1 border-black rounded bg-black hover:bg-opacity-80 text-white px-4 py-2'
-      onClick={shuffle}
-    >
-      Deal Cards
-    </button>
+    <div className='container mx-auto flex flex-col text-center flex-1 h-screen items-center justify-center leading-6'>
+      <p className='text-md px-8 my-20'>
+        Shuffles the deck of <strong>240</strong> NBA players, then splits them
+        evenly between you and the computer:
+      </p>
+
+      {!spinner ? (
+        <button
+          onClick={shuffle}
+          className='text-2xl bg-black text-white font-bold p-3 shadow hover:bg-opacity-80 w-1/2 item-center'
+        >
+          DEAL CARDS
+        </button>
+      ) : (
+        <p className='text-xl font-bold'>SHUFFLING PLAYERS...</p>
+      )}
+
+      {spinner && (
+        <div className='my-10 py-10'>
+          <Loader />
+        </div>
+      )}
+    </div>
   )
 
   const resetButton = gameOver === true && (
@@ -174,10 +200,10 @@ const Game = () => {
   )
 
   return (
-    <div className='container mx-auto flex flex-col items-center justify-center'>
+    <div className='container mx-auto flex flex-col pt-20 text-center'>
       <div className='text-xl font-bold text-gray-700'>{whoWonMessage}</div>
 
-      <div className='flex flex-col w-full items-center py-6'>
+      <div className='flex flex-col w-full py-6'>
         {isLoaded && !gameOver && (
           <>
             <h2 className='text-2xl p-4 text-gray-600'>Current Card:</h2>
