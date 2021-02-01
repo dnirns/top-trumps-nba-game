@@ -74,49 +74,49 @@ const Card = ({
                       <div className='text-base md:text-lg text-gray-50 flex flex-wrap justify-center'>
                         <button
                           className='card-btn'
-                          value='shooting'
+                          value='Shooting'
                           onClick={handleSelection}
                         >
                           Shooting: {playerCards[0].shooting}
                         </button>
                         <button
                           className='card-btn'
-                          value='dribbling'
+                          value='Dribbling'
                           onClick={handleSelection}
                         >
                           Handles: {playerCards[0].dribbling}
                         </button>
                         <button
                           className='card-btn'
-                          value='passing'
+                          value='Passing'
                           onClick={handleSelection}
                         >
                           Passing: {playerCards[0].passing}
                         </button>
                         <button
                           className='card-btn'
-                          value='blocks'
+                          value='Blocks'
                           onClick={handleSelection}
                         >
                           Blocks: {playerCards[0].block}
                         </button>
                         <button
                           className='card-btn'
-                          value='dunking'
+                          value='Dunking'
                           onClick={handleSelection}
                         >
                           Dunking: {playerCards[0].dunking}
                         </button>
                         <button
                           className='card-btn'
-                          value='steals'
+                          value='Steals'
                           onClick={handleSelection}
                         >
                           Steals: {playerCards[0].steal}
                         </button>
                         <button
                           className='card-btn'
-                          value='rebounds'
+                          value='Rebounds'
                           onClick={handleSelection}
                         >
                           Rebounds: {playerCards[0].rebound}

@@ -68,7 +68,7 @@ const Game = () => {
     setTimeout(() => {
       setIsLoaded(true)
       setSpinner(false)
-    }, 5000)
+    }, 4000)
   }
 
   //functions to handle adding/removing of cards when one wins/loses
@@ -120,25 +120,25 @@ const Game = () => {
     const value = e.target.value
     let player = 0
     let comp = 0
-    if (value === 'shooting') {
+    if (value === 'Shooting') {
       player = playerCards[0].shooting
       comp = computerCards[0].shooting
-    } else if (value === 'dribbling') {
+    } else if (value === 'Dribbling') {
       player = playerCards[0].dribbling
       comp = computerCards[0].dribbling
-    } else if (value === 'passing') {
+    } else if (value === 'Passing') {
       player = playerCards[0].passing
       comp = computerCards[0].passing
-    } else if (value === 'blocks') {
+    } else if (value === 'Blocks') {
       player = playerCards[0].block
       comp = computerCards[0].block
-    } else if (value === 'dunking') {
+    } else if (value === 'Dunking') {
       player = playerCards[0].dunking
       comp = computerCards[0].dunking
-    } else if (value === 'steals') {
+    } else if (value === 'Steals') {
       player = playerCards[0].steal
       comp = computerCards[0].steal
-    } else if (value === 'rebounds') {
+    } else if (value === 'Rebounds') {
       player = playerCards[0].rebound
       comp = computerCards[0].rebound
     }
@@ -172,7 +172,7 @@ const Game = () => {
       {!spinner ? (
         <button
           onClick={shuffle}
-          className='text-xl bg-blue-900 text-gray-50 font-bold px-8 py-5 rounded-lg shadow-lg hover:bg-opacity-80'
+          className='text-xl bg-blue-900 text-gray-50 font-bold px-8 py-5 rounded-lg shadow-lg active:bg-blue-800'
         >
           DEAL CARDS
         </button>

@@ -8,6 +8,6 @@ html {
 
 @layer components {
   .card-btn {
-    @apply w-5/12 m-3 p-5 bg-blue-900 hover:bg-opacity-70 rounded-lg shadow-lg;
+    @apply w-5/12 m-3 p-5 bg-blue-900 rounded-lg shadow-lg active:bg-blue-800;
   }
 }
