@@ -1,4 +1,8 @@
-@import "mixins";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 
 html, body {
   margin: 0;
@@ -24,15 +28,12 @@ html, body {
   width: 30vw;
   max-width: 400px;
   min-width: 250px;
-  
+
 }
 
 
 
 .card-list {
-  // @include flex-centered;
-  // flex: 1;
-  // flex-direction: column;
   height: 50vh;
   max-height: 500px;
   width: 30vw;
@@ -82,7 +83,7 @@ li {
   cursor: pointer;
 }
 
-
+/*
 button {
   border: none;
   cursor: pointer;
@@ -96,8 +97,8 @@ button:hover {
   background: white;
 }
 button:active {
-  opacity: .7;
-}
+  opacity: .7; */
+/* } */
 .reset-btn {
   width: auto;
 }
