@@ -1,0 +1,103 @@
+@import "mixins";
+
+html, body {
+  margin: 0;
+
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+
+}
+
+.card {
+  box-shadow: 0 8px 16px #868686;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.card-info {
+  @include flex-centered;
+  flex: 1;
+  flex-direction: column;
+  max-height: 500px;
+  width: 30vw;
+  max-width: 400px;
+  min-width: 250px;
+  
+}
+
+
+
+.card-list {
+  // @include flex-centered;
+  // flex: 1;
+  // flex-direction: column;
+  height: 50vh;
+  max-height: 500px;
+  width: 30vw;
+  max-width: 400px;
+  min-width: 250px;
+  overflow-y: auto;
+}
+
+
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+}
+
+.cards-wrapper {  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.result {
+  min-height: 100px;
+}
+
+
+li {
+  list-style: none;
+  padding: 3px;
+}
+.score {
+  font-size: 2em;
+}
+
+.shuffle-button {
+  font-size: 1.5em;
+  width: auto;
+  padding: 10px;
+}
+
+.shuffle-button:hover {
+  opacity: .7;
+  cursor: pointer;
+}
+
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid;
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+}
+button:hover {
+  background: white;
+}
+button:active {
+  opacity: .7;
+}
+.reset-btn {
+  width: auto;
+}
