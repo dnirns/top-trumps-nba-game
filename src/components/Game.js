@@ -160,28 +160,19 @@ const Game = () => {
     setIsLoaded(true)
   }
 
-  // smaller JSX bits to conditionally render
-
   const winner = gameOver && <div>{winnerText}</div>
-
-  // const whoWonMessage = lastCardMsg === true && gameOver === false && (
-  //   <h4>
-  //     {winnerText} - {winnerCurrent.firstName} {winnerCurrent.lastName} beats{' '}
-  //     {loserCurrent.firstName} {loserCurrent.lastName} in {chosenAttribute}...
-  //   </h4>
-  // )
 
   const startButton = !isLoaded && (
     <div className='flex flex-col text-center flex-1 h-screen items-center mt-20 leading-8'>
       <p className='text-md px-8 my-10'>
-        Shuffle the deck of <strong>240</strong> NBA player and split them
-        evenly between you and your computer opponent to begin:
+        Click to shuffle the deck of <strong>240</strong> current NBA players
+        and split them evenly between you and your computer opponent:
       </p>
 
       {!spinner ? (
         <button
           onClick={shuffle}
-          className='text-xl bg-blue-900 text-gray-50 font-bold p-5 rounded-lg shadow hover:bg-opacity-80 w-1/2 item-center'
+          className='text-xl bg-blue-900 text-gray-50 font-bold px-8 py-5 rounded-lg shadow-lg hover:bg-opacity-80'
         >
           DEAL CARDS
         </button>

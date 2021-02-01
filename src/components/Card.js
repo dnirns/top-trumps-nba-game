@@ -73,49 +73,49 @@ const Card = ({
                       </h3>
                       <div className='text-base md:text-lg text-gray-50 flex flex-wrap justify-center'>
                         <button
-                          className='w-5/12 m-3 p-5 bg-blue-900 hover:bg-opacity-70'
+                          className='card-btn'
                           value='shooting'
                           onClick={handleSelection}
                         >
                           Shooting: {playerCards[0].shooting}
                         </button>
                         <button
-                          className='w-5/12  m-3 p-5 bg-blue-900 hover:hover:bg-opacity-70'
+                          className='card-btn'
                           value='dribbling'
                           onClick={handleSelection}
                         >
                           Handles: {playerCards[0].dribbling}
                         </button>
                         <button
-                          className='w-5/12  m-3 p-5 bg-blue-900 hover:bg-opacity-70'
+                          className='card-btn'
                           value='passing'
                           onClick={handleSelection}
                         >
                           Passing: {playerCards[0].passing}
                         </button>
                         <button
-                          className='w-5/12 m-3 p-5 bg-blue-900 hover:bg-opacity-70'
+                          className='card-btn'
                           value='blocks'
                           onClick={handleSelection}
                         >
                           Blocks: {playerCards[0].block}
                         </button>
                         <button
-                          className='w-5/12 m-3 p-5 bg-blue-900 hover:bg-opacity-70'
+                          className='card-btn'
                           value='dunking'
                           onClick={handleSelection}
                         >
                           Dunking: {playerCards[0].dunking}
                         </button>
                         <button
-                          className='w-5/12 m-3 p-5 bg-blue-900 hover:bg-opacity-70'
+                          className='card-btn'
                           value='steals'
                           onClick={handleSelection}
                         >
                           Steals: {playerCards[0].steal}
                         </button>
                         <button
-                          className='w-5/12  m-3 p-5 bg-blue-900 hover:bg-opacity-70'
+                          className='card-btn'
                           value='rebounds'
                           onClick={handleSelection}
                         >

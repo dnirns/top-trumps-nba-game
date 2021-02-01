@@ -12,7 +12,7 @@ const Home = () => {
         </div>
 
         <Link to='/game'>
-          <button className='text-xl bg-blue-900 text-gray-50 font-bold p-5 rounded shadow hover:bg-opacity-80'>
+          <button className='text-xl bg-blue-900 text-gray-50 font-bold px-8 py-5 rounded-lg shadow-lg hover:bg-opacity-80'>
             PLAY A GAME
           </button>
         </Link>

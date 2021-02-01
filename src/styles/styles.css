@@ -5,3 +5,9 @@
 html {
   min-height: 100vh;
 }
+
+@layer components {
+  .card-btn {
+    @apply w-5/12 m-3 p-5 bg-blue-900 hover:bg-opacity-70 rounded-lg shadow-lg;
+  }
+}
