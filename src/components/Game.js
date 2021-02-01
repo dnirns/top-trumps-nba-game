@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import data from '../data/data.json'
-
 import { TiTick } from 'react-icons/ti'
 import { FaSkullCrossbones } from 'react-icons/fa'
 import Loader from './Loader'
 import Card from './Card'
 
 const Game = () => {
+  //? state will be consolidated and handled by Redux eventually
+
   const [playerCards, setPlayerCards] = useState([])
   const [computerCards, setComputerCards] = useState([])
   const [playerScore, setPlayerScore] = useState()
@@ -17,14 +18,11 @@ const Game = () => {
   const [winnerCurrent, setWinnerCurrent] = useState({})
   const [loserCurrent, setLoserCurrent] = useState({})
   const [chosenAttribute, setChosenAttribute] = useState('')
-
   const [spinner, setSpinner] = useState(false)
-
   const [lastCardMsg, setLastCardMsg] = useState(false)
 
-  //arrays to hold randomly shuffled cardData objects and shuffled deck split into two for each hand
-
-  //converts data object from json into array of objects
+  //? arrays to hold temporarily hold randomly shuffled cardData objects and shuffled deck split into two
+  //? converts data object from json into array of objects
 
   let shuffledDeck = []
   let playerDeck = []
@@ -41,7 +39,7 @@ const Game = () => {
     }
   }, [playerScore, computerScore])
 
-  //shuffling and splitting the deck into two hands from cardData.js
+  //?shuffling and splitting the deck into two hands from cardData.js
   const shuffle = () => {
     const dataArray = Object.keys(data).map((key) => {
       return data[key]
@@ -62,28 +60,29 @@ const Game = () => {
       dataArray[index] = temp
     }
     shuffledDeck = [...dataArray]
-    console.log(shuffledDeck)
     split()
     setSpinner(true)
+
+    //? false loading spinner while 'shuffling deck'
     setTimeout(() => {
       setIsLoaded(true)
       setSpinner(false)
     }, 4000)
   }
 
-  //functions to handle adding/removing of cards when one wins/loses
+  //? functions to handle adding/removing of cards when one wins/loses
 
   const removeCompCard = () => {
-    //move current player card to end of array
+    //? move current players card (index 0) to end of their array
     playerCards.push(playerCards.shift())
     setPlayerCards([...playerCards])
-    //remove first comp card & store in const, then set comp cards array to itself
+    //? remove first computers card
     const removedCard = computerCards.shift()
     setComputerCards([...computerCards])
-    //add removed comp card to end of player cards array, then set player cards to itself
+    //? add removed comps card to end of players array
     playerCards.push(removedCard)
     setPlayerCards([...playerCards])
-    //update score - all the cards in each hand (length of array)
+    //? update score - all the cards in each hand (length of each array)
     setComputerScore(computerCards.length)
     setPlayerScore(playerCards.length)
     if (playerCards === 0 || computerCards === 0) {
@@ -115,7 +114,7 @@ const Game = () => {
     setPlayerCards([])
   }
 
-  //compare attributes
+  //? compare attributes of both arrays index 0 to decide winner of each round
   const handleSelection = (e) => {
     const value = e.target.value
     let player = 0
@@ -153,9 +152,7 @@ const Game = () => {
       setWinnerText(<FaSkullCrossbones />)
       removePlayerCard()
     }
-
     setChosenAttribute(e.target.value)
-
     setLastCardMsg(true)
     setIsLoaded(true)
   }

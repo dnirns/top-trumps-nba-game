@@ -1,3 +1,5 @@
+/* code for this loader has been adapted from example at https://loading.io/css/ */
+
 .lds-roller {
   display: inline-block;
   position: relative;
