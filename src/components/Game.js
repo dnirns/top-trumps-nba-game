@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import data from '../data/data.json'
 import Loader from './Loader'
+import Card from './Card'
 
 const Game = () => {
   const [playerCards, setPlayerCards] = useState([])
@@ -168,10 +169,10 @@ const Game = () => {
   )
 
   const startButton = !isLoaded && (
-    <div className='container mx-auto flex flex-col text-center flex-1 h-screen items-center justify-center leading-6'>
+    <div className='container mx-auto flex flex-col text-center flex-1 h-screen items-center justify-center leading-8'>
       <p className='text-md px-8 my-20'>
-        Shuffles the deck of <strong>240</strong> NBA players, then splits them
-        evenly between you and the computer:
+        Shuffle the deck of <strong>240</strong> NBA player and split them
+        evenly between you and your computer opponent to begin:
       </p>
 
       {!spinner ? (
@@ -203,82 +204,14 @@ const Game = () => {
     <div className='container mx-auto flex flex-col pt-20 text-center'>
       <div className='text-xl font-bold text-gray-700'>{whoWonMessage}</div>
 
-      <div className='flex flex-col w-full py-6'>
-        {isLoaded && !gameOver && (
-          <>
-            <h2 className='text-2xl p-4 text-gray-600'>Current Card:</h2>
+      {isLoaded && !gameOver && (
+        <Card
+          playerCards={playerCards}
+          isLoaded={isLoaded}
+          handleSelection={handleSelection}
+        />
+      )}
 
-            <div className='flex flex-col border-gray-500 rounded-lg shadow-2xl flex-1  py-4 px-28 justify-center items-center mx-20'>
-              {playerCards.length > 0 && (
-                <>
-                  <div className=''>
-                    <div className='flex flex-col py-4 items-center w-full flex-1'>
-                      {isLoaded === true && (
-                        <>
-                          <h3 className='text-xl text-gray-700 py-4 font-bold w-full'>
-                            {playerCards[0].firstName} {playerCards[0].lastName}
-                          </h3>
-                          <div className='text-gray-50 flex flex-col'>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='shooting'
-                              onClick={handleSelection}
-                            >
-                              Shooting: {playerCards[0].shooting}
-                            </button>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='dribbling'
-                              onClick={handleSelection}
-                            >
-                              Handles: {playerCards[0].dribbling}
-                            </button>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='passing'
-                              onClick={handleSelection}
-                            >
-                              Passing: {playerCards[0].passing}
-                            </button>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='blocks'
-                              onClick={handleSelection}
-                            >
-                              Blocks: {playerCards[0].block}
-                            </button>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='dunking'
-                              onClick={handleSelection}
-                            >
-                              Dunking: {playerCards[0].dunking}
-                            </button>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='steals'
-                              onClick={handleSelection}
-                            >
-                              Steals: {playerCards[0].steal}
-                            </button>
-                            <button
-                              className='my-3 px-4 py-2 bg-blue-400 hover:bg-blue-300'
-                              value='rebounds'
-                              onClick={handleSelection}
-                            >
-                              Rebounds: {playerCards[0].rebound}
-                            </button>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-          </>
-        )}
-      </div>
       {startButton}
       {winner}
       {resetButton}
