@@ -7,12 +7,12 @@ const Home = () => {
     <div className='container mx-auto text-center flex flex-col h-screen'>
       <div className='flex flex-col flex-1 h-full justify-around items-center'>
         <div>
-          <p className='text-9xl font-bold py-3 text-blue-600'>NBA</p>
-          <p className='text-3xl font-bold py-3'>Top Trumps *</p>
+          <p className='text-9xl font-bold py-3 text-blue-700'>NBA</p>
+          <p className='text-3xl font-bold py-3 text-gray-800'>Top Trumps *</p>
         </div>
 
         <Link to='/game'>
-          <button className='text-2xl bg-black text-white font-bold px-4 py-3 shadow hover:bg-opacity-80'>
+          <button className='text-xl bg-blue-900 text-gray-50 font-bold p-5 rounded shadow hover:bg-opacity-80'>
             PLAY A GAME
           </button>
         </Link>

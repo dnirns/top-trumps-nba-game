@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import data from '../data/data.json'
+
+import { TiTick } from 'react-icons/ti'
+import { FaSkullCrossbones } from 'react-icons/fa'
 import Loader from './Loader'
 import Card from './Card'
 
@@ -142,12 +145,12 @@ const Game = () => {
     if (player > comp) {
       setWinnerCurrent(playerCards[0])
       setLoserCurrent(computerCards[0])
-      setWinnerText('You won')
+      setWinnerText(<TiTick />)
       removeCompCard()
     } else {
       setWinnerCurrent(computerCards[0])
       setLoserCurrent(playerCards[0])
-      setWinnerText('You lost')
+      setWinnerText(<FaSkullCrossbones />)
       removePlayerCard()
     }
 
@@ -157,20 +160,20 @@ const Game = () => {
     setIsLoaded(true)
   }
 
-  //smaller JSX bits to conditionally render
+  // smaller JSX bits to conditionally render
 
   const winner = gameOver && <div>{winnerText}</div>
 
-  const whoWonMessage = lastCardMsg === true && gameOver === false && (
-    <h4>
-      {winnerText} - {winnerCurrent.firstName} {winnerCurrent.lastName} beats{' '}
-      {loserCurrent.firstName} {loserCurrent.lastName} in {chosenAttribute}...
-    </h4>
-  )
+  // const whoWonMessage = lastCardMsg === true && gameOver === false && (
+  //   <h4>
+  //     {winnerText} - {winnerCurrent.firstName} {winnerCurrent.lastName} beats{' '}
+  //     {loserCurrent.firstName} {loserCurrent.lastName} in {chosenAttribute}...
+  //   </h4>
+  // )
 
   const startButton = !isLoaded && (
-    <div className='container mx-auto flex flex-col text-center flex-1 h-screen items-center justify-center leading-8'>
-      <p className='text-md px-8 my-20'>
+    <div className='flex flex-col text-center flex-1 h-screen items-center mt-20 leading-8'>
+      <p className='text-md px-8 my-10'>
         Shuffle the deck of <strong>240</strong> NBA player and split them
         evenly between you and your computer opponent to begin:
       </p>
@@ -178,7 +181,7 @@ const Game = () => {
       {!spinner ? (
         <button
           onClick={shuffle}
-          className='text-2xl bg-black text-white font-bold p-3 shadow hover:bg-opacity-80 w-1/2 item-center'
+          className='text-xl bg-blue-900 text-gray-50 font-bold p-5 rounded-lg shadow hover:bg-opacity-80 w-1/2 item-center'
         >
           DEAL CARDS
         </button>
@@ -201,14 +204,19 @@ const Game = () => {
   )
 
   return (
-    <div className='container mx-auto flex flex-col pt-20 text-center'>
-      <div className='text-xl font-bold text-gray-700'>{whoWonMessage}</div>
-
+    <div className='container mx-auto flex flex-1 h-screen flex-col pt-6 text-center'>
       {isLoaded && !gameOver && (
         <Card
+          winnerText={winnerText}
+          winnerCurrent={winnerCurrent}
+          loserCurrent={loserCurrent}
+          chosenAttribute={chosenAttribute}
           playerCards={playerCards}
+          computerCards={computerCards}
           isLoaded={isLoaded}
           handleSelection={handleSelection}
+          gameOver={gameOver}
+          lastCardMsg={lastCardMsg}
         />
       )}
 
