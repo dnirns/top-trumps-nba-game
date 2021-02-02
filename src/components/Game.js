@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import data from '../data/data.json'
+import players from '../data/players.json'
 import { TiTick } from 'react-icons/ti'
 import { FaSkullCrossbones } from 'react-icons/fa'
 import Loader from './Loader'
 import Card from './Card'
+import basketball from '../assets/basketball.png'
 
 const Game = () => {
   //? state will be consolidated and handled by Redux eventually
@@ -41,8 +42,8 @@ const Game = () => {
 
   //?shuffling and splitting the deck into two hands from cardData.js
   const shuffle = () => {
-    const dataArray = Object.keys(data).map((key) => {
-      return data[key]
+    const dataArray = Object.keys(players).map((key) => {
+      return players[key]
     })
     const split = () => {
       const halfDeck = Math.ceil(shuffledDeck.length / 2)
@@ -60,6 +61,7 @@ const Game = () => {
       dataArray[index] = temp
     }
     shuffledDeck = [...dataArray]
+    console.log(shuffledDeck[0].player.shooting)
     split()
     setSpinner(true)
 
@@ -67,7 +69,7 @@ const Game = () => {
     setTimeout(() => {
       setIsLoaded(true)
       setSpinner(false)
-    }, 4000)
+    }, 4500)
   }
 
   //? functions to handle adding/removing of cards when one wins/loses
@@ -120,26 +122,26 @@ const Game = () => {
     let player = 0
     let comp = 0
     if (value === 'Shooting') {
-      player = playerCards[0].shooting
-      comp = computerCards[0].shooting
+      player = playerCards[0].player.shooting
+      comp = computerCards[0].player.shooting
     } else if (value === 'Dribbling') {
-      player = playerCards[0].dribbling
-      comp = computerCards[0].dribbling
+      player = playerCards[0].player.dribbling
+      comp = computerCards[0].player.dribbling
     } else if (value === 'Passing') {
-      player = playerCards[0].passing
-      comp = computerCards[0].passing
+      player = playerCards[0].player.passing
+      comp = computerCards[0].player.passing
     } else if (value === 'Blocks') {
-      player = playerCards[0].block
-      comp = computerCards[0].block
+      player = playerCards[0].player.block
+      comp = computerCards[0].player.block
     } else if (value === 'Dunking') {
-      player = playerCards[0].dunking
-      comp = computerCards[0].dunking
+      player = playerCards[0].player.dunking
+      comp = computerCards[0].player.dunking
     } else if (value === 'Steals') {
-      player = playerCards[0].steal
-      comp = computerCards[0].steal
+      player = playerCards[0].player.steal
+      comp = computerCards[0].player.steal
     } else if (value === 'Rebounds') {
-      player = playerCards[0].rebound
-      comp = computerCards[0].rebound
+      player = playerCards[0].player.rebound
+      comp = computerCards[0].player.rebound
     }
     if (player > comp) {
       setWinnerCurrent(playerCards[0])
@@ -178,8 +180,12 @@ const Game = () => {
       )}
 
       {spinner && (
-        <div className='my-10 py-10'>
-          <Loader />
+        <div className='my-10 py-10 flex w-screen items-center justify-center'>
+          <img
+            className='basketball-gfx'
+            src={basketball}
+            alt='basketball animation'
+          />
         </div>
       )}
     </div>

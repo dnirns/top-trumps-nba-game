@@ -19,11 +19,11 @@ const Card = ({
       <div className='p-4 text-center flex flex-col items-center'>
         <p className='text-base py-4'>
           <strong>
-            {winnerCurrent.firstName} {winnerCurrent.lastName}
+            {winnerCurrent.player.firstName} {winnerCurrent.player.lastName}
           </strong>{' '}
           beat{' '}
           <strong>
-            {loserCurrent.firstName} {loserCurrent.lastName}
+            {loserCurrent.player.firstName} {loserCurrent.player.lastName}
           </strong>{' '}
           at <strong>{chosenAttribute}</strong>
         </p>
@@ -68,58 +68,65 @@ const Card = ({
                 <div className='flex flex-col py-2 items-center w-full jusify-between items-between'>
                   {isLoaded === true && (
                     <>
-                      <h3 className='text-4xl text-gray-700 py-6 font-bold w-full'>
-                        {playerCards[0].firstName} {playerCards[0].lastName}
-                      </h3>
-                      <div className='text-base md:text-lg text-gray-50 flex flex-wrap justify-center'>
+                      <p className='text-4xl text-gray-700 py-6 font-bold w-full'>
+                        {playerCards[0].player.firstName}{' '}
+                        {playerCards[0].player.lastName}
+                      </p>
+                      <p className='text-lg'>
+                        of the{' '}
+                        <span className='text-xl font-bold text-gray-600 py-1'>
+                          {playerCards[0].team}
+                        </span>
+                      </p>
+                      <div className='text-base md:text-lg text-gray-50 flex flex-wrap justify-center pt-8'>
                         <button
                           className='card-btn'
                           value='Shooting'
                           onClick={handleSelection}
                         >
-                          Shooting: {playerCards[0].shooting}
+                          Shooting: {playerCards[0].player.shooting}
                         </button>
                         <button
                           className='card-btn'
                           value='Dribbling'
                           onClick={handleSelection}
                         >
-                          Handles: {playerCards[0].dribbling}
+                          Handles: {playerCards[0].player.dribbling}
                         </button>
                         <button
                           className='card-btn'
                           value='Passing'
                           onClick={handleSelection}
                         >
-                          Passing: {playerCards[0].passing}
+                          Passing: {playerCards[0].player.passing}
                         </button>
                         <button
                           className='card-btn'
                           value='Blocks'
                           onClick={handleSelection}
                         >
-                          Blocks: {playerCards[0].block}
+                          Blocks: {playerCards[0].player.block}
                         </button>
                         <button
                           className='card-btn'
                           value='Dunking'
                           onClick={handleSelection}
                         >
-                          Dunking: {playerCards[0].dunking}
+                          Dunking: {playerCards[0].player.dunking}
                         </button>
                         <button
                           className='card-btn'
                           value='Steals'
                           onClick={handleSelection}
                         >
-                          Steals: {playerCards[0].steal}
+                          Steals: {playerCards[0].player.steal}
                         </button>
                         <button
                           className='card-btn'
                           value='Rebounds'
                           onClick={handleSelection}
                         >
-                          Rebounds: {playerCards[0].rebound}
+                          Rebounds: {playerCards[0].player.rebound}
                         </button>
                       </div>
                     </>

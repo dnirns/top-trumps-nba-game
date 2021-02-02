@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Loader from './Loader'
+import basketball from '../assets/basketball.png'
 
 const Home = () => {
   return (
@@ -10,7 +10,6 @@ const Home = () => {
           <p className='text-9xl font-bold py-3 text-blue-700'>NBA</p>
           <p className='text-3xl font-bold py-3 text-gray-800'>Top Trumps *</p>
         </div>
-
         <Link to='/game'>
           <button className='text-xl bg-blue-900 active:bg-blue-800 text-gray-50 font-bold px-8 py-5 rounded-lg shadow-lg'>
             PLAY A GAME

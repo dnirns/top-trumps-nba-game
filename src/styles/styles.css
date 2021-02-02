@@ -11,3 +11,22 @@ html {
     @apply w-5/12 m-3 p-5 bg-blue-900 rounded-lg shadow-lg active:bg-blue-800;
   }
 }
+
+.basketball-gfx {
+  height: 100px;
+  position: absolute;
+  transition: ease;
+  animation: bounce 0.8s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(0px, 210px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
