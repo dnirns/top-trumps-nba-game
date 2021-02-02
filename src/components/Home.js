@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import basketball from '../assets/basketball.png'
+
 
 const Home = () => {
   return (

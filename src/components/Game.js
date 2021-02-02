@@ -143,17 +143,24 @@ const Game = () => {
       player = playerCards[0].player.rebound
       comp = computerCards[0].player.rebound
     }
-    if (player > comp) {
+    if (playerCards[0].team === 'Boston Celtics') {
+      setWinnerCurrent(computerCards[0])
+      setLoserCurrent(playerCards[0])
+      setWinnerText(<FaSkullCrossbones />)
+      removePlayerCard()
+    } else if (player > comp) {
       setWinnerCurrent(playerCards[0])
       setLoserCurrent(computerCards[0])
       setWinnerText(<TiTick />)
       removeCompCard()
+      console.log(playerCards[0].team)
     } else {
       setWinnerCurrent(computerCards[0])
       setLoserCurrent(playerCards[0])
       setWinnerText(<FaSkullCrossbones />)
       removePlayerCard()
     }
+
     setChosenAttribute(e.target.value)
     setLastCardMsg(true)
     setIsLoaded(true)
