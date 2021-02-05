@@ -21,6 +21,8 @@ const Game = () => {
   const [chosenAttribute, setChosenAttribute] = useState('')
   const [spinner, setSpinner] = useState(false)
   const [lastCardMsg, setLastCardMsg] = useState(false)
+  const [winnerAttribute, setWinnerAttribute] = useState(null)
+  const [loserAttribute, setLoserAttribute] = useState(null)
 
   //? arrays to hold temporarily hold randomly shuffled cardData objects and shuffled deck split into two
   //? converts data object from json into array of objects
@@ -146,17 +148,23 @@ const Game = () => {
     if (playerCards[0].team === 'Boston Celtics') {
       setWinnerCurrent(computerCards[0])
       setLoserCurrent(playerCards[0])
+      setWinnerAttribute(comp)
+      setLoserAttribute(player)
       setWinnerText(<FaSkullCrossbones />)
       removePlayerCard()
     } else if (player > comp) {
       setWinnerCurrent(playerCards[0])
       setLoserCurrent(computerCards[0])
+      setWinnerAttribute(player)
+      setLoserAttribute(comp)
       setWinnerText(<TiTick />)
       removeCompCard()
       console.log(playerCards[0].team)
     } else {
       setWinnerCurrent(computerCards[0])
       setLoserCurrent(playerCards[0])
+      setWinnerAttribute(comp)
+      setLoserAttribute(player)
       setWinnerText(<FaSkullCrossbones />)
       removePlayerCard()
     }
@@ -218,6 +226,8 @@ const Game = () => {
           handleSelection={handleSelection}
           gameOver={gameOver}
           lastCardMsg={lastCardMsg}
+          winnerAttribute={winnerAttribute}
+          loserAttribute={loserAttribute}
         />
       )}
 

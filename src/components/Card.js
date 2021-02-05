@@ -13,6 +13,8 @@ const Card = ({
   chosenAttribute,
   gameOver,
   lastCardMsg,
+  winnerAttribute,
+  loserAttribute,
 }) => {
   const whoWonMessage =
     lastCardMsg === true && gameOver === false ? (
@@ -26,6 +28,8 @@ const Card = ({
             {loserCurrent.player.firstName} {loserCurrent.player.lastName}
           </strong>{' '}
           at <strong>{chosenAttribute}</strong>
+          <br /> <strong>{winnerAttribute}</strong> vs{' '}
+          <strong>{loserAttribute}</strong>
         </p>
       </div>
     ) : (
@@ -68,7 +72,7 @@ const Card = ({
                 <div className='flex flex-col py-2 items-center w-full jusify-between items-between'>
                   {isLoaded === true && (
                     <>
-                      <p className='text-4xl text-gray-700 py-6 font-bold w-full'>
+                      <p className='text-4xl text-gray-700 py-1 font-bold w-full'>
                         {playerCards[0].player.firstName}{' '}
                         {playerCards[0].player.lastName}
                       </p>
