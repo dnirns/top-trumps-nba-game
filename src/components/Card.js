@@ -29,7 +29,7 @@ const Card = ({
         </p>
       </div>
     ) : (
-      <p className='text-sm px-4'>SELECT A PLAYERS ATTRIBUTES ATTRIBUTE:</p>
+      <p className='text-sm px-4'>SELECT A PLAYERS ATTRIBUTE:</p>
     )
 
   return (
